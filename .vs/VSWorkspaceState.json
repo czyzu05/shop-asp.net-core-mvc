@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Shop"
+    "\\Shop",
+    "\\Shop\\Controllers",
+    "\\Shop\\Views\\Home",
+    "\\Shop\\Views\\Shared"
   ],
-  "SelectedNode": "\\Shop\\Views",
+  "SelectedNode": "\\Shop\\Shop.sln",
   "PreviewInSolutionExplorer": false
 }
