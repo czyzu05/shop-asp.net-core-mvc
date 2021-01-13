@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Shop.DAL;
+using Shop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +10,12 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
+        private StoreContext db = new StoreContext();
         public ActionResult Index()
         {
+            BookType newBookType = new BookType { Name = "Fantasy", Description = "Fantasy description", IconFileName = "1.png" };
+            db.BookTypes.Add(newBookType);
+            db.SaveChanges();
             return View();
         }
 
