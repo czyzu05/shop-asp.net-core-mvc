@@ -88,3 +88,6 @@ C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\bin\EntityFramework.dll
 C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\bin\EntityFramework.SqlServer.dll
 C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\bin\EntityFramework.xml
 C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\bin\EntityFramework.SqlServer.xml
+C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\obj\Debug\Shop.Migrations.InitialCreate.resources
+C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\obj\Debug\Shop.csproj.GenerateResource.cache
+C:\Users\Damian\Desktop\shop-asp.net-core-mvc\Shop\obj\Debug\Shop.Migrations.RemoveShortDescription.resources

@@ -13,6 +13,12 @@ namespace Shop.DAL
         {
 
         }
+
+        static StoreContext()
+        {
+            Database.SetInitializer<StoreContext>(new StoreInitializer());
+        }
+
         public DbSet<Book> Books { get; set; }
 
         public DbSet<BookType> BookTypes { get; set; }
