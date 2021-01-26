@@ -1,5 +1,6 @@
 ﻿using Shop.DAL;
 using Shop.Models;
+using Shop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,18 @@ namespace Shop.Controllers
         private StoreContext db = new StoreContext();
         public ActionResult Index()
         {
-            BookType newBookType = new BookType { Name = "Fantasy", Description = "Fantasy description", IconFileName = "1.png" };
-            db.BookTypes.Add(newBookType);
-            db.SaveChanges();
-            return View();
+            var bookTypes = db.BookTypes.ToList();
+            var newArrivals = db.Books.Where(book => !book.isHidden).OrderByDescending(book => book.DateAdded).Take(3).ToList();
+            var bestsellers = db.Books.Where(book => !book.isHidden && book.isBestseller).Take(3).ToList();
+
+            var vm = new HomeViewModel()
+            {
+                Bestsellers = bestsellers,
+                BookTypes = bookTypes,
+                NewArrivals = newArrivals
+            };
+
+            return View(vm);
         }
 
         public ActionResult About()

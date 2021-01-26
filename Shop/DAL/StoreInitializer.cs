@@ -22,14 +22,14 @@ namespace Shop.DAL
         {
             var bookTypes = new List<BookType>
             {
-                new BookType() {BookTypeId = 1, Name = "Fantasy", IconFileName = "fantasy.png"},
-                new BookType() {BookTypeId = 2, Name = "Crime", IconFileName = "crime.png"},
-                new BookType() {BookTypeId = 3, Name = "Adventure", IconFileName = "adventure.png"},
-                new BookType() {BookTypeId = 4, Name = "Hobby", IconFileName = "hobby.png"},
-                new BookType() {BookTypeId = 5, Name = "Biography", IconFileName = "biography.png"},
-                new BookType() {BookTypeId = 6, Name = "Horror", IconFileName = "horror.png"},
-                new BookType() {BookTypeId = 7, Name = "For Children", IconFileName = "forChildren.png"},
-                new BookType() {BookTypeId = 8, Name = "Sale", IconFileName = "sale.png"},
+                new BookType() {BookTypeId = 1, Name = "Fantasy", IconFileName = "fas fa-hat-wizard"},
+                new BookType() {BookTypeId = 2, Name = "Crime", IconFileName = "fas fa-bomb"},
+                new BookType() {BookTypeId = 3, Name = "Adventure", IconFileName = "fas fa-helicopter"},
+                new BookType() {BookTypeId = 4, Name = "Hobby", IconFileName = "fas fa-wrench"},
+                new BookType() {BookTypeId = 5, Name = "Biography", IconFileName = "fas fa-user"},
+                new BookType() {BookTypeId = 6, Name = "Horror", IconFileName = "fas fa-wave-square"},
+                new BookType() {BookTypeId = 7, Name = "For Children", IconFileName = "fas fa-palette"},
+                new BookType() {BookTypeId = 8, Name = "Sale", IconFileName = "fas fa-percent"},
             };
 
             bookTypes.ForEach(item => context.BookTypes.AddOrUpdate(item));
