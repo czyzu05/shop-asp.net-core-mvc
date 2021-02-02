@@ -1,45 +1,37 @@
-﻿using Shop.DAL;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Shop.Models;
-using Shop.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-        private StoreContext db = new StoreContext();
-        public ActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
-            var bookTypes = db.BookTypes.ToList();
-            var newArrivals = db.Books.Where(book => !book.isHidden).OrderByDescending(book => book.DateAdded).Take(3).ToList();
-            var bestsellers = db.Books.Where(book => !book.isHidden && book.isBestseller).Take(3).ToList();
-
-            var vm = new HomeViewModel()
-            {
-                Bestsellers = bestsellers,
-                BookTypes = bookTypes,
-                NewArrivals = newArrivals
-            };
-
-            return View(vm);
+            _logger = logger;
         }
 
-        public ActionResult About()
+        public IActionResult Index()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public IActionResult Privacy()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

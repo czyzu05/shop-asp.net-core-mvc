@@ -1,21 +1,8 @@
-﻿@model Shop.ViewModels.HomeViewModel
-@{
-    ViewBag.Title = "Home Page";
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
 
-<nav>
-    <ul>
-        @foreach(var bookType in Model.BookTypes)
-        {
-        <li>
-            <div class="categoryItem">
-                <i class="@bookType.IconFileName"></i>
-                <a href="@Url.Action("List", "Store", new { bookTypeName = bookType.Name.ToLower()})">
-                    @bookType.Name
-                </a>
-                <i class="fas fa-arrow-right"></i>
-            </div>
-        </li>
-        }
-    </ul>
-</nav>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
