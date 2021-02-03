@@ -64,5 +64,23 @@ namespace Shop.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Delete(string Id)
+        {
+            Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
+
+            return View(prod);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Product product)
+        {
+            _context.Attach(product);
+            _context.Entry(product).State = EntityState.Deleted;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
