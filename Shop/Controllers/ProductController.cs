@@ -11,15 +11,15 @@ namespace Shop.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ShopContext _context;
+        public readonly IProductRepository _productRepository;
 
-        public ProductController(ShopContext context)
+        public ProductController(IProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
         public IActionResult Index()
         {
-            List<Product> products = _context.Products.ToList();
+            List<Product> products = _productRepository.Products.ToList();
             return View(products);
         }
 
@@ -31,56 +31,56 @@ namespace Shop.Controllers
             return View(prod);
         }
 
-        [HttpPost]
-        public IActionResult Create(Product product)
-        {
-            _context.Add(product);
-            _context.SaveChanges();
+        //[HttpPost]
+        //public IActionResult Create(Product product)
+        //{
+        //    _context.Add(product);
+        //    _context.SaveChanges();
 
-            return RedirectToAction("index");
-        }
+        //    return RedirectToAction("index");
+        //}
 
-        public IActionResult Details(string Id)
-        {
-            Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
+        //public IActionResult Details(string Id)
+        //{
+        //    Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
 
-            return View(prod);
-        }
+        //    return View(prod);
+        //}
 
-        [HttpGet]
-        public IActionResult Edit(string Id)
-        {
-            Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
+        //[HttpGet]
+        //public IActionResult Edit(string Id)
+        //{
+        //    Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
 
-            return View(prod);
-        }
+        //    return View(prod);
+        //}
 
-        [HttpPost]
-        public IActionResult Edit(Product product)
-        {
-            _context.Attach(product);
-            _context.Entry(product).State = EntityState.Modified;
-            _context.SaveChanges();
+        //[HttpPost]
+        //public IActionResult Edit(Product product)
+        //{
+        //    _context.Attach(product);
+        //    _context.Entry(product).State = EntityState.Modified;
+        //    _context.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
-        [HttpGet]
-        public IActionResult Delete(string Id)
-        {
-            Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
+        //[HttpGet]
+        //public IActionResult Delete(string Id)
+        //{
+        //    Product prod = _context.Products.Where(p => p.Code == Id).FirstOrDefault();
 
-            return View(prod);
-        }
+        //    return View(prod);
+        //}
 
-        [HttpPost]
-        public IActionResult Delete(Product product)
-        {
-            _context.Attach(product);
-            _context.Entry(product).State = EntityState.Deleted;
-            _context.SaveChanges();
+        //[HttpPost]
+        //public IActionResult Delete(Product product)
+        //{
+        //    _context.Attach(product);
+        //    _context.Entry(product).State = EntityState.Deleted;
+        //    _context.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }

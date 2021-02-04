@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.Data;
+using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,10 @@ namespace Shop
 
             services.AddControllersWithViews();
 
+            services.AddRazorPages();
+
+            services.AddTransient<IProductRepository, EFProductRepository>();
+
             services.AddDbContext<ShopContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConn")));
         }
 
@@ -48,6 +53,9 @@ namespace Shop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseStatusCodePages();
+            app.UseDeveloperExceptionPage();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -60,8 +68,11 @@ namespace Shop
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
             });
+
+            SeedData.EnsurePopulated(app);
         }
+
     }
 }

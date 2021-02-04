@@ -10,8 +10,8 @@ using Shop.Data;
 namespace Shop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20210203101855_Identity")]
-    partial class Identity
+    [Migration("20210203232007_CreateDatabase")]
+    partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -227,9 +227,6 @@ namespace Shop.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<float>("Cost")
-                        .HasColumnType("real");
-
                     b.Property<string>("Description")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
@@ -242,8 +239,8 @@ namespace Shop.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Code");
 

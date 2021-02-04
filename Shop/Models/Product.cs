@@ -18,9 +18,7 @@ namespace Shop.Models
         [MaxLength(25)]
         public string Category { get; set; }
         [Range(5, 1000)]
-        public float Price { get; set; }
-        [Range(5, 1000)]
-        public float Cost {get; set; }
+        public decimal Price { get; set; }
         [MaxLength(500)]
         public string ImageUrl { get; set; }
     }
